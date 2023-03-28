@@ -54,7 +54,7 @@ CompileDaemon -command="./goleaf"
 -   create .env file
 
     ```
-    	cp .env.example .env
+    cp .env.example .env
     ```
 
 -   replace 8080 with any port number as you wish
