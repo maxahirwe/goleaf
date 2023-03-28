@@ -17,7 +17,6 @@ The errors should be shown to the user!
 
 -   [BONUS] Requires basic authentication for any operation (the credentials can be hard-coded for the sake of testing)
 -   [BONUS] The listening port of the server can be configured with a command line argument
-    Notes:
 
 ## Notes
 
