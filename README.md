@@ -23,13 +23,21 @@ The errors should be shown to the user!
 In general, the returned errors should contain a meaningful reference to the function call chain, so that it is easy to understand where the errors happened
 Please provide reference on how to run and test the app
 
+## WHY's
+
+-   `Gin`: light weight, high perfomance, great documentation, fantastic middleware pattern that I'm familiar with in nodejs/express
+
+-   `GO ORM`: Full-Featured ORM, associations, Migrations, Support community and more
+
+-   `SQLite`: quick development without having to install specific dbms & drivers
+
 ## Installation
 
 ```
 go get
 ```
 
-if needed
+if needed install CompileDaemon
 
 ```
 go install github.com/githubnemo/CompileDaemon
@@ -43,14 +51,24 @@ CompileDaemon -command="./goleaf"
 
 ### Run
 
-replace 8080 with any port number as you wish
+-   create .env file
 
-```
-export PORT=8080 && go run main.go
-```
+    ```
+    	cp .env.example .env
+    ```
+
+-   replace 8080 with any port number as you wish
+
+    ```
+    export PORT=8080 && go run main.go
+    ```
 
 ### Testing
 
 ```
 go test --cover
 ```
+
+## Author
+
+[@maxahirwe](https://max.rw)

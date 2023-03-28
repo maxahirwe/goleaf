@@ -10,12 +10,14 @@ import (
 	"github.com/maxahirwe/goleaf/models"
 )
 
+// base url endpoint
 func GetBaseUrl(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{
 		"message": "users endpoints",
 	})
 }
 
+// create user endpoint
 func CreateUser(c *gin.Context) {
 	minYear := 1850
 	var UserBody struct {
@@ -37,6 +39,7 @@ func CreateUser(c *gin.Context) {
 	c.JSON(http.StatusCreated, gin.H{"status": "user created", "data": user})
 }
 
+// get user endpoint
 func GetUser(c *gin.Context) {
 	// get id param
 	id := c.Param("id")
@@ -55,9 +58,10 @@ func GetUser(c *gin.Context) {
 
 }
 
+// get all users endpoint
 func GetAllUsers(c *gin.Context) {
 	var users []models.User
-	//can add pagination
+	// can add pagination
 	initializer.DATABASE.Find(&users)
 	c.JSON(http.StatusOK, gin.H{
 		"users": users,

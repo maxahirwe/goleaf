@@ -8,5 +8,5 @@ func init() {
 }
 
 func Load() {
-	DATABASE.AutoMigrate(&models.User{})
+	DATABASE.AutoMigrate(&models.User{}) // performs migration for user table
 }
