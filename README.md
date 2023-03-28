@@ -17,7 +17,6 @@ The errors should be shown to the user!
 
 -   [BONUS] Requires basic authentication for any operation (the credentials can be hard-coded for the sake of testing)
 -   [BONUS] The listening port of the server can be configured with a command line argument
-    Notes:
 
 ## Notes
 
@@ -27,9 +26,31 @@ Please provide reference on how to run and test the app
 ## Installation
 
 ```
-go install github.com/joho/godotenv/cmd/godotenv@latest
+go get
 ```
+
+if needed
+
+```
+go install github.com/githubnemo/CompileDaemon
+```
+
+### Development
 
 ```
 CompileDaemon -command="./goleaf"
+```
+
+### Run
+
+replace 8080 with any port number as you wish
+
+```
+export PORT=8080 && go run main.go
+```
+
+### Testing
+
+```
+go test --cover
 ```

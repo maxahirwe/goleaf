@@ -25,7 +25,7 @@ func LoadDB() {
 	db, err := gorm.Open(sqlite.Open(dbName), &gorm.Config{})
 	if err != nil {
 		log.Fatal("Failed connecting to DB_NAME:", dbName)
-		panic("failed to connect database")
+		panic("Failed to connect database")
 	}
 	DATABASE = db
 }
