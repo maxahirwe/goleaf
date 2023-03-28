@@ -19,7 +19,7 @@ func GetBaseUrl(c *gin.Context) {
 func CreateUser(c *gin.Context) {
 	minYear := 1850
 	var UserBody struct {
-		Name       string `json:"Name"  binding:"required"`
+		Name       string `json:"Name"  binding:"required,min=2"`
 		SignupTime int64  `json:"SignupTime"  binding:"required,numeric"`
 	}
 	if err := c.ShouldBindJSON(&UserBody); err != nil {
@@ -29,7 +29,7 @@ func CreateUser(c *gin.Context) {
 	signupTime := time.UnixMilli(UserBody.SignupTime)
 	fmt.Println("signupTime", signupTime, signupTime.Year())
 	if signupTime.Year() < minYear {
-		c.JSON(http.StatusBadRequest, gin.H{"validation error": "signupTime min time year 1850"})
+		c.JSON(http.StatusBadRequest, gin.H{"validation error": "Key: 'SignupTime' Error:Field validation for 'SignupTime' failed on min time year of 1850"})
 		return
 	}
 	user := models.User{Name: UserBody.Name, SignupTime: signupTime.UnixMilli()}

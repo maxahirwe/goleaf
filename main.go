@@ -12,9 +12,12 @@ func init() {
 
 func main() {
 	r := gin.Default()
-	r.GET("/", controller.GetBaseUrl)
-	r.POST("/", controller.CreateUser)
-	r.GET("/:id", controller.GetUser)
-	r.POST("/all", controller.GetAllUsers)
+	apiv1 := r.Group("api/v1", gin.BasicAuth(gin.Accounts{"idt": "leaf"}))
+	{
+		apiv1.GET("/", controller.GetBaseUrl)
+		apiv1.POST("/", controller.CreateUser)
+		apiv1.GET("/:id", controller.GetUser)
+		apiv1.POST("/all", controller.GetAllUsers)
+	}
 	r.Run()
 }
