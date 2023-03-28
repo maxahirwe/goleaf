@@ -10,14 +10,19 @@ func init() {
 	initializer.Load()
 }
 
-func main() {
+func setupRouter() *gin.Engine {
 	r := gin.Default()
-	apiv1 := r.Group("api/v1", gin.BasicAuth(gin.Accounts{"idt": "leaf"}))
+	apiV1 := r.Group("api/v1", gin.BasicAuth(gin.Accounts{"idt": "leaf"}))
 	{
-		apiv1.GET("/", controller.GetBaseUrl)
-		apiv1.POST("/", controller.CreateUser)
-		apiv1.GET("/:id", controller.GetUser)
-		apiv1.POST("/all", controller.GetAllUsers)
+		apiV1.GET("/", controller.GetBaseUrl)
+		apiV1.POST("/", controller.CreateUser)
+		apiV1.GET("/:id", controller.GetUser)
+		apiV1.POST("/all", controller.GetAllUsers)
 	}
+	return r
+}
+
+func main() {
+	r := setupRouter()
 	r.Run()
 }

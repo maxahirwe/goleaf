@@ -26,19 +26,31 @@ Please provide reference on how to run and test the app
 ## Installation
 
 ```
-go install github.com/joho/godotenv/cmd/godotenv@latest
+go get
 ```
 
-### Development watch
+if needed
+
+```
+go install github.com/githubnemo/CompileDaemon
+```
+
+### Development
 
 ```
 CompileDaemon -command="./goleaf"
 ```
 
-### Testing
+### Run
 
 replace 8080 with any port number as you wish
 
 ```
 export PORT=8080 && go run main.go
+```
+
+### Testing
+
+```
+go test --cover
 ```
