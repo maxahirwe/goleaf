@@ -11,6 +11,7 @@ import (
 
 var DATABASE *gorm.DB
 
+// Loads .env environment variables
 func LoadEnv() {
 
 	err := godotenv.Load()
@@ -19,6 +20,7 @@ func LoadEnv() {
 	}
 }
 
+// Loads the database based on the DB_NAME set in .env
 func LoadDB() {
 	dbName := os.Getenv("DB_NAME")
 	log.Println("DB_NAME:", dbName)

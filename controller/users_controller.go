@@ -1,7 +1,6 @@
 package controller
 
 import (
-	"fmt"
 	"net/http"
 	"time"
 
@@ -10,12 +9,14 @@ import (
 	"github.com/maxahirwe/goleaf/models"
 )
 
+// base url endpoint
 func GetBaseUrl(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{
 		"message": "users endpoints",
 	})
 }
 
+// create user endpoint
 func CreateUser(c *gin.Context) {
 	minYear := 1850
 	var UserBody struct {
@@ -27,7 +28,6 @@ func CreateUser(c *gin.Context) {
 		return
 	}
 	signupTime := time.UnixMilli(UserBody.SignupTime)
-	fmt.Println("signupTime", signupTime, signupTime.Year())
 	if signupTime.Year() < minYear {
 		c.JSON(http.StatusBadRequest, gin.H{"validation error": "Key: 'SignupTime' Error:Field validation for 'SignupTime' failed on min time year of 1850"})
 		return
@@ -37,12 +37,11 @@ func CreateUser(c *gin.Context) {
 	c.JSON(http.StatusCreated, gin.H{"status": "user created", "data": user})
 }
 
+// get user endpoint
 func GetUser(c *gin.Context) {
-	// get id param
-	id := c.Param("id")
+	id := c.Param("id") // get id param
 	var user models.User
-	//find a user by param id
-	res := initializer.DATABASE.First(&user, id)
+	res := initializer.DATABASE.First(&user, id) // find a user by param id
 	if res.Error == nil {
 		c.JSON(http.StatusOK, gin.H{
 			"user": user,
@@ -55,9 +54,10 @@ func GetUser(c *gin.Context) {
 
 }
 
+// get all users endpoint
 func GetAllUsers(c *gin.Context) {
 	var users []models.User
-	//can add pagination
+	// can add pagination
 	initializer.DATABASE.Find(&users)
 	c.JSON(http.StatusOK, gin.H{
 		"users": users,
