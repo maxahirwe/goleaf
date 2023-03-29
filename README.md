@@ -8,15 +8,17 @@
 
 ## Endpoints:
 
--   Set a user object
--   Get a user by id
--   [BONUS] List all users
+[END-POINTS DOCUMENTATION PUBLISHED](https://documenter.getpostman.com/view/16879881/2s93RRxDqH)
+
+-   [x] Set a user object
+-   [x] Get a user by id
+-   [x] [BONUS] List all users
 
 Requests must be correctly validated, and the response status code must correctly match the type of error
 The errors should be shown to the user!
 
--   [BONUS] Requires basic authentication for any operation (the credentials can be hard-coded for the sake of testing)
--   [BONUS] The listening port of the server can be configured with a command line argument
+-   [x] [BONUS] Requires basic authentication for any operation (the credentials can be hard-coded for the sake of testing) (user:`idt`, pass:`leaf`)
+-   [x] [BONUS] The listening port of the server can be configured with a command line argument (can be set in .env or passed with command)
 
 ## Notes
 
@@ -37,21 +39,9 @@ Please provide reference on how to run and test the app
 go get
 ```
 
-if needed install CompileDaemon
-
-```
-go install github.com/githubnemo/CompileDaemon
-```
-
-### Development
-
-```
-CompileDaemon -command="./goleaf"
-```
-
 ### Run
 
--   create .env file
+-   create .env file from the provided sample
 
     ```
     cp .env.example .env
@@ -66,8 +56,14 @@ CompileDaemon -command="./goleaf"
 ### Testing
 
 ```
-go test --cover
+go test
 ```
+
+## Extra
+
+-   Use https://sqlitebrowser.org/dl/ to investigate the sqllite file
+-   ![testcases.png](/documentation/testcases.png)
+-   [messagingApp-architecture(maxahirwe)](</documentation/messagingApp-architecture(maxahirwe).pdf>)
 
 ## Author
 
